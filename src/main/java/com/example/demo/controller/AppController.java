@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.entity.User;
 import com.example.demo.repo.UserRepository;
+import com.mj.librarymanagement.input.RawBook;
+import com.mj.librarymanagement.model.Book;
+import com.mj.librarymanagement.repositories.BookRepository;
+import com.mj.librarymanagement.services.BookService;
 
 
 
@@ -19,6 +23,8 @@ public class AppController {
 
 	@Autowired
 	private UserRepository userRepo;
+	
+	
 	
 	@GetMapping("")
 	public String displayMainPage() {
@@ -54,8 +60,5 @@ public class AppController {
 //		return "registerSuccess";
 //	}
 	
-	@GetMapping("/addbook")
-	public String displayAddBookPage() {
-		return "addbook";
-	}
+	
 }
