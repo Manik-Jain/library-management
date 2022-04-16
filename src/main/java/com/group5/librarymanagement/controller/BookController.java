@@ -11,17 +11,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.group5.librarymanagement.input.RawBook;
 import com.group5.librarymanagement.model.Book;
 import com.group5.librarymanagement.model.IssueBooks;
 import com.group5.librarymanagement.services.BookService;
-import com.group5.librarymanagement.services.IssueService;
 
 @Controller
-
 public class BookController {
 	
 	@Autowired
@@ -35,14 +30,13 @@ public class BookController {
 	}
 	
 	@GetMapping("/{id}")
-	public String bookDetails(@PathVariable Long id,Model model) {
+	public String bookDetails(@PathVariable Long id, Model model) {
 		IssueBooks ib = new IssueBooks();
 		ib.setBookId(id);
 		model.addAttribute("book", bookService.getBook(id));
 		model.addAttribute("issueBooks", ib);
 		return "bookDetails";
 	}
-	
 	
 	@PutMapping("/book")
 	public Book update(@RequestBody RawBook input) {
@@ -68,11 +62,12 @@ public class BookController {
 		model.addAttribute("book", new Book());
 		return "addbook";
 	}
+	
 	@PostMapping("/addbook")
-	public String addBook(Book book,Model model) {
+	public String addBook(Book book, Model model) {
 		System.out.print("inside post books");
 		System.out.print(book);
-		Book addBook=bookService.addBook(book);
+		Book addBook = bookService.addBook(book);
 		String success ="Book added succesfully";
 		model.addAttribute("success", success);		
 		return "addbook";

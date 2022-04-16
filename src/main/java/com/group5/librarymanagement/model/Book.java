@@ -1,5 +1,6 @@
 package com.group5.librarymanagement.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -8,9 +9,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "books")
-public class Book {
+@JsonIgnoreProperties(ignoreUnknown=true)
+public class Book implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -4,8 +4,11 @@
 /Users/manikjain/Downloads/library-management/src/main/java/com/group5/librarymanagement/repositories/UserRepository.java
 /Users/manikjain/Downloads/library-management/src/main/java/com/group5/librarymanagement/entity/User.java
 /Users/manikjain/Downloads/library-management/src/main/java/com/group5/librarymanagement/repositories/IssueRepository.java
+/Users/manikjain/Downloads/library-management/src/main/java/com/group5/librarymanagement/Test.java
 /Users/manikjain/Downloads/library-management/src/main/java/com/group5/librarymanagement/controller/BookController.java
 /Users/manikjain/Downloads/library-management/src/main/java/com/group5/librarymanagement/auth/UserAuthentication.java
+/Users/manikjain/Downloads/library-management/src/main/java/com/group5/librarymanagement/repositories/FineRepository.java
+/Users/manikjain/Downloads/library-management/src/main/java/com/group5/librarymanagement/model/Fine.java
 /Users/manikjain/Downloads/library-management/src/main/java/com/group5/librarymanagement/config/WebSecurityConfig.java
 /Users/manikjain/Downloads/library-management/src/main/java/com/group5/librarymanagement/services/IssueService.java
 /Users/manikjain/Downloads/library-management/src/main/java/com/group5/librarymanagement/model/Book.java

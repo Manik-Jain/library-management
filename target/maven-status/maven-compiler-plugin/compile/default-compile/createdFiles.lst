@@ -2,6 +2,7 @@ PasswordEncoder.class
 com/group5/librarymanagement/services/IssueService.class
 com/group5/librarymanagement/services/BookService.class
 com/group5/librarymanagement/model/Book.class
+com/group5/librarymanagement/Test.class
 com/group5/librarymanagement/entity/User.class
 com/group5/librarymanagement/input/RawBook.class
 com/group5/librarymanagement/auth/UserService.class
@@ -14,5 +15,7 @@ com/group5/librarymanagement/repositories/UserRepository.class
 com/group5/librarymanagement/repositories/BookRepository.class
 com/group5/librarymanagement/auth/UserAuthentication.class
 com/group5/librarymanagement/config/WebSecurityConfig.class
+com/group5/librarymanagement/repositories/FineRepository.class
 com/group5/librarymanagement/controller/IssueController.class
+com/group5/librarymanagement/model/Fine.class
 com/group5/librarymanagement/controller/AppController.class

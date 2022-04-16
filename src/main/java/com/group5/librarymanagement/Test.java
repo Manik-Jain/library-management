@@ -2,6 +2,7 @@ package com.group5.librarymanagement;
 
 import java.sql.Date;
 import java.util.Calendar;
+import java.time.temporal.ChronoUnit;
 
 public class Test {
 	
@@ -16,8 +17,11 @@ public class Test {
 		
 		Date returnDate = new Date(cal.getTimeInMillis());
 		
+		java.util.Date utilDate = new java.util.Date(d.getTime());
+		java.util.Date utilDate2 = new java.util.Date(returnDate.getTime());
 		
-		System.out.println(returnDate);
+		System.out.println(ChronoUnit.DAYS.between(utilDate.toInstant(), utilDate2.toInstant()));
+	
 		
 	}
 

@@ -1,5 +1,6 @@
 package com.group5.librarymanagement.model;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 import javax.persistence.Entity;
@@ -8,9 +9,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "issue")
-public class IssueBooks {
+@JsonIgnoreProperties(ignoreUnknown=true)
+public class IssueBooks implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,12 +31,11 @@ public class IssueBooks {
 	
 	private Long userId;
 	
-	//0 : false
-	private int issued;
-	
 	private Date returnDate;
 	
 	private Date actualReturnDate;
+	
+	private Long incurredFine;
 	
 	public Date getActualReturnDate() {
 		return actualReturnDate;
@@ -41,12 +49,7 @@ public class IssueBooks {
 	public void setReturnDate(Date returnDate) {
 		this.returnDate = returnDate;
 	}
-	public int getIssued() {
-		return issued;
-	}
-	public void setIssued(int issued) {
-		this.issued = issued;
-	}
+	
 	public Long getId() {
 		return id;
 	}
@@ -71,6 +74,10 @@ public class IssueBooks {
 	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
-	
-
+	public long getIncurredFine() {
+		return incurredFine;
+	}
+	public void setIncurredFine(long incurredFine) {
+		this.incurredFine = incurredFine;
+	}
 }

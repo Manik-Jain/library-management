@@ -5,6 +5,8 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.SecurityBuilder;
 import org.springframework.security.config.annotation.SecurityConfigurerAdapter;
@@ -38,7 +40,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Bean
 	public DaoAuthenticationProvider authenticationProvider() {
-		DaoAuthenticationProvider authProvider =new DaoAuthenticationProvider();
+		DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
 		authProvider.setUserDetailsService(userDetailsService());
 		authProvider.setPasswordEncoder(passwordEncod());
 		
@@ -50,16 +52,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		// TODO Auto-generated method stub
 		auth.authenticationProvider(authenticationProvider());
 	}
+	
+	@Override
+	public void configure(WebSecurity web) throws Exception {
+	    web.ignoring().antMatchers("/issue");
+	    web.ignoring().antMatchers("/return/**");
+	}
 
 	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		// TODO Auto-generated method stub
-		http.authorizeRequests()
-//			.antMatchers("/list_users").authenticated()
-			
-			.antMatchers("/addbook").authenticated()
-			.antMatchers("/showbook").authenticated()
-//			.anyRequest().authenticated()
+	protected void configure(HttpSecurity httpSecurity) throws Exception {
+		httpSecurity.authorizeRequests()
+        	.antMatchers("/addbook").authenticated()
+        	.antMatchers("/book").authenticated()
 			.anyRequest().permitAll()
 			.and()
 			.formLogin()
@@ -69,6 +73,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.and()
 			.logout().permitAll()
 			.logoutSuccessUrl("/").permitAll();
+		
 	}
 
 	
