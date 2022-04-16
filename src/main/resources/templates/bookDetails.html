@@ -64,12 +64,13 @@
 			    </div>
 			  </div>
 			  <div class="card-footer">		
+			  
 			  <form th:action="@{/issue}" method="post" style=" margin:0 auto;" th:object="${issueBooks}">
 			 <!-- UserId -->
 				<div class="form-group col-6">
 					<label class="form-label"> User Id </label>
 					<div>
-						<input type="text" class="form-control" th:field="*{userId}"  minlength="2" maxlength="20" />
+						<input type="text" class="form-control" th:field="*{userId}"  minlength="1" maxlength="20" />
 					</div>
 				</div>    
 				<button type="submit" class="btn btn-primary btn-lg">Issue Book</button>  
