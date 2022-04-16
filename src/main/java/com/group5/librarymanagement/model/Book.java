@@ -24,15 +24,7 @@ public class Book {
     
     private String publication;
     
-    private String status;
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
+    private boolean isIssued;
 
 	public Long getId() {
 		return id;
@@ -74,9 +66,17 @@ public class Book {
 		this.publication = publication;
 	}
 
+	public boolean getIsIssued() {
+		return isIssued;
+	}
+
+	public void setIsIssued(boolean isIssued) {
+		this.isIssued = isIssued;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(author, description, id, name, publication);
+		return Objects.hash(author, description, id, isIssued, name, publication);
 	}
 
 	@Override
@@ -89,13 +89,13 @@ public class Book {
 			return false;
 		Book other = (Book) obj;
 		return Objects.equals(author, other.author) && Objects.equals(description, other.description)
-				&& Objects.equals(id, other.id) && Objects.equals(name, other.name)
+				&& Objects.equals(id, other.id) && isIssued == other.isIssued && Objects.equals(name, other.name)
 				&& Objects.equals(publication, other.publication);
 	}
 
 	@Override
 	public String toString() {
 		return "Book [id=" + id + ", name=" + name + ", author=" + author + ", description=" + description
-				+ ", publication=" + publication + "]";
+				+ ", publication=" + publication + ", isIssued=" + isIssued + "]";
 	}
 }

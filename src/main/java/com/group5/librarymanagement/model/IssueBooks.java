@@ -15,11 +15,18 @@ public class IssueBooks {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+	
 	private Date issueDate;
+	
 	private Long bookId;
+	
 	private Long userId;
+	
+	//0 : false
 	private int issued;
+	
 	private Date returnDate;
+	
 	private Date actualReturnDate;
 	
 	public Date getActualReturnDate() {

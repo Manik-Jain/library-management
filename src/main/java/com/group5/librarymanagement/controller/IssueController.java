@@ -15,8 +15,7 @@ public class IssueController {
 	IssueService issueService;
 	
 	@PostMapping("/issue")
-	public String IssueBook(IssueBooks i)
-	{
+	public String IssueBook(IssueBooks i){
 		String issue= issueService.newIssue(i);
 		return "showbook";
 	}

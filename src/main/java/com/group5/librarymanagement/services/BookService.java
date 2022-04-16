@@ -24,7 +24,7 @@ public class BookService {
 	}
 	
 	public Book addBook(Book book) {
-		book.setStatus("available");
+		book.setIsIssued(false);
 		Book saved =  bookRepository.saveAndFlush(book);
 		System.out.println(saved);
 		return saved;
@@ -32,7 +32,6 @@ public class BookService {
 	
 	public Book update(Book book) {
 		Book saved =  bookRepository.saveAndFlush(book);
-		System.out.println(saved);
 		return saved;
 	}
 	
