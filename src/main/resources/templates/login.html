@@ -1,16 +1,5 @@
-<<<<<<< Updated upstream
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-	<h1>Add Book Page</h1>
-</body>
-=======
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
@@ -47,7 +36,7 @@
 						th:href="@{/search}"><h3>Search Book</h3></a></li>
 				</ul>
 
-			<div class="text-right m-3 navbar navbar-expand-lg ">
+				<div class="text-right m-3 navbar navbar-expand-lg ">
 					<div sec:authorize="isAnonymous()" class="collapse navbar-collapse">
 						<ul class="navbar-nav">
 							<li class="nav-item ml-3"><a class="nav-link text-white"
@@ -90,69 +79,54 @@
 
 	<!-- END OF NAVBAR CODE -->
 
+	<!-- Login Form -->
 
 	<div class="container">
-		<div class="text-center">
-			<h1>Add book</h1>
+		<div class="card m-4">
+			<img class="card-img img-fluid"
+				src="https://tame-your-job-search.herokuapp.com/assets/img/backgrounds/1@2x.jpg"
+				alt="Card image cap">
 
-		</div>
-
-
-		<form th:action="@{/addbook}" method="post" style="margin: 0 auto;"
-			th:object="${book}">
-
-			<div class="m-3">
-
-				<!-- Book name -->
-				<div class="row">
-
-					<div class="form-group col-6">
-						<label class="form-label">Enter Book Name</label> <input
-							type="text" class="form-control" th:field="*{name}" required />
-						<!-- th:field="*{name}" to link the input with email in entity -->
+			<form class="mx-auto w-50 card-img-overlay" th:action="@{/login}"
+				method="post">
+				<!-- Email -->
+				<div class="text-center">
+					<h2 class="text-white">Login</h2>
+				</div>
+				<div>
+					<div th:if="${param.error}" class="alert alert-danger">
+						<h2>Bad Credentials</h2>
+					</div>
+					<div class="form-group">
+						<label class="form-label text-white">Enter your E-mail</label> <input
+							type="email" class="form-control bg-dark text-white"
+							name="username" required />
+						<!-- th:field="*{email}" to link the input with email in entity -->
 
 					</div>
 				</div>
-				<!-- Description -->
-				<div class="form-group col-6">
-					<label class="form-label">Enter Description </label>
-					<div>
-						<input type="text" class="form-control" th:field="*{description}"
-							minlength="2" maxlength="50" />
+
+				<!-- Password -->
+				<div class="">
+
+					<div class="form-group ">
+						<label class="form-label text-white">Enter the password</label> <input
+							type="password" class="form-control bg-dark text-white"
+							name="password" required minlength="6" maxlength="12" />
+
 					</div>
 				</div>
-
-
-				<!-- Author -->
-				<div class="form-group col-6">
-					<label class="form-label">Enter Author </label>
-					<div>
-						<input type="text" class="form-control" th:field="*{author}"
-							required minlength="2" maxlength="20" />
-					</div>
-				</div>
-
-				<!-- Publication -->
-				<div class="form-group col-6">
-					<label class="form-label">Enter Publication </label>
-					<div>
-						<input type="text" class="form-control" th:field="*{publication}"
-							minlength="2" maxlength="20" />
-					</div>
-				</div>
-
-
 
 				<!-- Submit -->
 				<div class="text-center">
-					<button type="submit" class="btn btn-primary btn-lg">Add
-						Book</button>
+					<button type="submit" class="btn btn-dark btn-lg">Sign In</button>
 				</div>
-		</form>
 
 
+			</form>
+		</div>
 	</div>
 
+
 </body>
->>>>>>> Stashed changes
 </html>
