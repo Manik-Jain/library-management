@@ -9,10 +9,12 @@ import com.group5.librarymanagement.model.IssueBooks;
 import com.group5.librarymanagement.repositories.FineRepository;
 import com.group5.librarymanagement.repositories.IssueRepository;
 
+
 import java.sql.Date;
 import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class IssueService {
@@ -30,7 +32,20 @@ public class IssueService {
 		return issueRepo.findAll();
 	}
 	
-	public IssueBooks newIssue(IssueBooks i) {		
+	public IssueBooks getBookById(Long id) {
+		Optional<IssueBooks> ib= issueRepo.findById(id); 
+		if(ib.isPresent())
+		{
+			return ib.get();
+		}
+		else {
+			IssueBooks nobooks = null;
+			return nobooks;
+		}
+		
+	}
+	
+ 	public IssueBooks newIssue(IssueBooks i) {		
 		long millis = System.currentTimeMillis();
 		Date d = new Date(millis);
 		
@@ -41,7 +56,7 @@ public class IssueService {
 		Date returnDate = new Date(cal.getTimeInMillis());
 		i.setIssueDate(d);
 		i.setReturnDate(returnDate);
-		i.setActualReturnDate(returnDate);
+		i.setActualReturnDate(null);
 		i.setIncurredFine(0L);
 		
 		IssueBooks newIssue = issueRepo.save(i);
