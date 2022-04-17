@@ -53,37 +53,26 @@
 		<!-- END OF NAVBAR CODE -->
 		<div class="container">
 			<div class="text-center">
-				<h1 th:text="${book.name}">Book Details</h1>					 
-			</div>
-		
+				<h1 >Issue Details</h1>					 
 			<div class="card">
 			  <div class="card-header text-center" >
-			    Description:
+			 <b>    <p class="card-text" th:text="'ID: ' + ${issue.id}">ID</p></b>
 			  </div>
 			  <div class="card-body ">			    
-			    <p class="card-text" th:text="${book.description}">Description</p>	
-			    <div class="text-right">
-			    <i><p class="card-text" th:text="${book.publication}">Publication</p></i>
-			    <b><p class="card-text" th:text="${book.author}">Author</p></b>
+			    <p class="card-text" th:text="'Issue Date: ' +${issue.issueDate}">Issue Date:</p>	
+			    <p class="card-text" th:text="'Return Date: ' +${issue.returnDate}">Return Date</p>
+			    <p class="card-text" th:text="'Fine: ' +${fine}">Fine</p>
 			    </div>
 			  </div>
-			  <div class="card-footer">		
-			  
-			  <form th:action="@{/issue}" method="post" style=" margin:0 auto;" th:object="${issueBooks}">
-			 <!-- UserId -->
-				<div class="form-group col-6">
-					<label class="form-label"> User Id </label>
-					<div>
-						<input type="text" class="form-control" th:field="*{userId}"  minlength="1" maxlength="20" />
-						<input type="hidden" class="form-control" th:field="*{bookId}" value="${book.id}" required />
-					</div>
-				</div>    
-				<button type="submit" class="btn btn-primary btn-lg">Issue Book</button>  
-			  </form>
-			    
+			  <div class="card-footer">	
+			   <form th:action="@{/return/}+${issue.id}" method="post" style=" margin:0 auto;" th:object="${issue}">
+			   
+				<button type="submit" class="btn btn-primary btn-lg">Return Book</button>  
+			  </form>	
 			    
 			  </div>
 			</div>
-		</div>
+			</div>
+		
 </body>
 </html>
