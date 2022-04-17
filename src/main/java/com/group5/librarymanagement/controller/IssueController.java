@@ -33,12 +33,12 @@ public class IssueController {
 		IssueBooks issueBooks = issueService.newIssue(i);
 
 		
-//		List<IssueBooks> issuedBooks = issueService.getIssuedBooks();
-//		model.addAttribute("issuedBooks", issuedBooks);	
-//		return "issuedbook";
+		List<IssueBooks> issuedBooks = issueService.getIssuedBooks();
+		model.addAttribute("issuedBooks", issuedBooks);	
+		return "issuedbook";
 		
-		model.addAttribute("books", bookService.getAllBooks());	
-		return "showbook";
+//		model.addAttribute("books", bookService.getAllBooks());	
+//		return "showbook";
 	}
 	
 	@GetMapping("/issue/{id}")
@@ -56,18 +56,6 @@ public class IssueController {
 		IssueBooks returnedBook =  issueService.returnBook(id);
 		model.addAttribute("issue", returnedBook);
 		model.addAttribute("fine", returnedBook.getIncurredFine());
-		return "returnDetails";
+		return "returnSuccess";
 	}
-	
-//	@PostMapping("/issue")
-//	public IssueBooks IssueBook(@RequestBody IssueBooks i){
-//		IssueBooks issueBooks = issueService.newIssue(i);
-//		return issueBooks;
-//	}
-//	
-//	@PutMapping("/return/{id}")
-//	public IssueBooks returnBook(@PathVariable Long id, Model model) {
-//		IssueBooks returnedBook =  issueService.returnBook(id);
-//		return returnedBook;
-//	}
 }

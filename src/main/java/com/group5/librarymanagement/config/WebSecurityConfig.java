@@ -55,8 +55,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-	    web.ignoring().antMatchers("/issue");
-	    web.ignoring().antMatchers("/return/**");
+//	    web.ignoring().antMatchers("/issue");
+//	    web.ignoring().antMatchers("/return/**");
 	}
 
 	@Override
@@ -64,6 +64,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		httpSecurity.authorizeRequests()
         	.antMatchers("/addbook").authenticated()
         	.antMatchers("/book").authenticated()
+        	.antMatchers("/issue").authenticated()
+        	.antMatchers("/showissue").authenticated()
 			.anyRequest().permitAll()
 			.and()
 			.formLogin()
