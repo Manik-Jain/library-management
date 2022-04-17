@@ -24,8 +24,6 @@ public class AppController {
 	@Autowired
 	private UserRepository userRepo;
 	
-	
-	
 	@GetMapping("")
 	public String displayMainPage() {
 		return "index";
@@ -37,15 +35,20 @@ public class AppController {
 		return "registrationForm";
 	}
 	
-	@PostMapping("/process_register")
-	public String processRegister(User user) {
+	@GetMapping("/login")
+	public String displayLoginForm() {
+		return "login";
+	}
+	
+	@PostMapping("/registerClicked")
+	public String onClickRegister(User user) {
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		String encodedPassword = passwordEncoder.encode(user.getPassword());
 		user.setPassword(encodedPassword);
 		
 		userRepo.save(user);
 		
-		return "registerSuccess";
+		return "login";
 	}
 	
 	@GetMapping("/home")
@@ -53,12 +56,12 @@ public class AppController {
 		return "index";
 	}
 	
-//	
-//	@PostMapping("/register_user")
-//	public String registerUser(User user) {
-//		userRepo.save(user);
-//		return "registerSuccess";
-//	}
+	
+	@PostMapping("/register_user")
+	public String registerUser(User user) {
+		userRepo.save(user);
+		return "registerSuccess";
+	}
 	
 	
 }

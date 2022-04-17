@@ -9,7 +9,7 @@ import com.group5.librarymanagement.entity.User;
 
 public class UserAuthentication implements UserDetails {
 	
-	private User user;
+private User user;
 	
 	
 

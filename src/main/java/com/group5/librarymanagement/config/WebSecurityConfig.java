@@ -5,8 +5,6 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.SecurityBuilder;
 import org.springframework.security.config.annotation.SecurityConfigurerAdapter;
@@ -34,15 +32,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 	
 	@Bean
-	public BCryptPasswordEncoder passwordEncod() {
-		return new BCryptPasswordEncoder();
-	}
-	
-	@Bean
 	public DaoAuthenticationProvider authenticationProvider() {
-		DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+		DaoAuthenticationProvider authProvider =new DaoAuthenticationProvider();
 		authProvider.setUserDetailsService(userDetailsService());
-		authProvider.setPasswordEncoder(passwordEncod());
+		authProvider.setPasswordEncoder(encodePwd());
 		
 		return authProvider;
 	}
@@ -52,31 +45,33 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		// TODO Auto-generated method stub
 		auth.authenticationProvider(authenticationProvider());
 	}
-	
-	@Override
-	public void configure(WebSecurity web) throws Exception {
-//	    web.ignoring().antMatchers("/issue");
-//	    web.ignoring().antMatchers("/return/**");
-	}
 
 	@Override
-	protected void configure(HttpSecurity httpSecurity) throws Exception {
-		httpSecurity.authorizeRequests()
-        	.antMatchers("/addbook").authenticated()
-        	.antMatchers("/book").authenticated()
-        	.antMatchers("/issue").authenticated()
-        	.antMatchers("/showissue").authenticated()
+	protected void configure(HttpSecurity http) throws Exception {
+		// TODO Auto-generated method stub
+		http.authorizeRequests()
+			
+			.antMatchers("/addbook").authenticated()
+			.antMatchers("/showbook").authenticated()
+			.antMatchers("/book").authenticated()
+			.antMatchers("/search").authenticated()
+//			.anyRequest().authenticated()
 			.anyRequest().permitAll()
 			.and()
 			.formLogin()
-				.usernameParameter("email")
+				.loginPage("/login")
+				.permitAll()
+//				.usernameParameter("email")
 				.defaultSuccessUrl("/home")
 				.permitAll()
 			.and()
 			.logout().permitAll()
 			.logoutSuccessUrl("/").permitAll();
-		
 	}
 
+	@Bean
+	public BCryptPasswordEncoder encodePwd() {
+		return new BCryptPasswordEncoder();
+	}
 	
 }

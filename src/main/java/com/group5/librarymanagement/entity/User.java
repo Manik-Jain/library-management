@@ -27,17 +27,21 @@ public class User {
 	@Column(nullable = false, length = 64)
 	private String password;
 	
+	@Column(nullable = false, length = 10)
+	private String phone;
+	
 	public User() {
 		super();
 	}
 	
-	public User(Long id, String email, String firstName, String lastName, String password) {
+	public User(Long id, String email, String firstName, String lastName, String password, String phone) {
 		super();
 		this.id = id;
 		this.email = email;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.password = password;
+		this.phone = phone;
 	}
 	public Long getId() {
 		return id;
@@ -70,6 +74,14 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 	
 	
