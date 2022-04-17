@@ -2,6 +2,7 @@ package com.group5.librarymanagement.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,13 @@ public class BookService {
 	private BookRepository bookRepository;
 	
 	public List<Book> getAllBooks() {
-		return bookRepository.findAll();
+		return bookRepository.findAll().stream().filter(book -> !book.getIsIssued()).collect(Collectors.toList());
+	}
+	
+	public List<Book> getIssuedBooks() {
+		List<Book> issued =  bookRepository.findAll().stream().filter(book -> book.getIsIssued()).collect(Collectors.toList());
+		System.out.println(issued);
+		return issued;
 	}
 	
 	public Book getBook(Long id) {

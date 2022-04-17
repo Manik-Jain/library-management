@@ -29,6 +29,13 @@ public class BookController {
 		return "showbook";
 	}
 	
+	@GetMapping("/issuedBooks")
+	public String issuedBooks(Model model) {
+		System.out.print("inside show books");		
+		model.addAttribute("books", bookService.getIssuedBooks());
+		return "showbook";
+	}
+	
 	@GetMapping("/{id}")
 	public String bookDetails(@PathVariable Long id, Model model) {
 		IssueBooks ib = new IssueBooks();
@@ -69,8 +76,8 @@ public class BookController {
 		System.out.print(book);
 		Book addBook = bookService.addBook(book);
 		String success ="Book added succesfully";
-		model.addAttribute("success", success);		
-		return "addbook";
+		model.addAttribute("books", bookService.getAllBooks());	
+		return "showbook";
 	}
 
 }

@@ -12,6 +12,7 @@ import com.group5.librarymanagement.repositories.IssueRepository;
 import java.sql.Date;
 import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
+import java.util.List;
 
 @Service
 public class IssueService {
@@ -24,6 +25,10 @@ public class IssueService {
 	
 	@Autowired
 	private FineRepository fineRepo;
+	
+	public List<IssueBooks> getIssuedBooks() {
+		return issueRepo.findAll();
+	}
 	
 	public IssueBooks newIssue(IssueBooks i) {		
 		long millis = System.currentTimeMillis();
