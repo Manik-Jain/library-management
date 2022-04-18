@@ -34,6 +34,8 @@ public class Book implements Serializable {
     private String publication;
     
     private boolean isIssued;
+    
+    private String status;
 
 	public Long getId() {
 		return id;
@@ -81,6 +83,16 @@ public class Book implements Serializable {
 
 	public void setIsIssued(boolean isIssued) {
 		this.isIssued = isIssued;
+	}
+	
+	
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	@Override

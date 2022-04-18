@@ -35,7 +35,7 @@
 					<li class="nav-item ml-3"><a class="nav-link text-white"
 						th:href="@{/search}"><h3>Search Book</h3></a></li>
 					<li class="nav-item ml-3"><a class="nav-link text-white"
-						th:href="@{/issue}"><h3>Issued Books</h3></a></li>
+						th:href="@{/issued}"><h3>Issued Books</h3></a></li>
 				</ul>
 
 				<div class="text-right m-3 navbar navbar-expand-lg float-right">
@@ -101,6 +101,8 @@
 					<label class="form-label"> User Id </label>
 					<div>
 						<input type="text" class="form-control" th:field="*{userId}"  minlength="1" maxlength="20" />
+						<input type="hidden" class="form-control" th:field="*{bookId}" value="${book.id}" required />
+						
 					</div>
 				</div>    
 				<button type="submit" class="btn btn-primary btn-lg">Issue Book</button>  

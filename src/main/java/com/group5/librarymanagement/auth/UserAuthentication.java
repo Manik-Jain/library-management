@@ -2,10 +2,11 @@ package com.group5.librarymanagement.auth;
 
 import java.util.Collection;
 
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.group5.librarymanagement.entity.User;
+import com.group5.librarymanagement.model.User;
 
 public class UserAuthentication implements UserDetails {
 	

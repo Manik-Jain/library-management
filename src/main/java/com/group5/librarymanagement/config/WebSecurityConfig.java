@@ -55,6 +55,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/showbook").authenticated()
 			.antMatchers("/book").authenticated()
 			.antMatchers("/search").authenticated()
+			.antMatchers("/issued").authenticated()
 //			.anyRequest().authenticated()
 			.anyRequest().permitAll()
 			.and()

@@ -58,4 +58,12 @@ public class IssueController {
 		model.addAttribute("fine", returnedBook.getIncurredFine());
 		return "returnSuccess";
 	}
+	
+	@GetMapping("/issued")
+	public String getIssuedBooks(Model model) {
+		List<IssueBooks> issuedBooks = issueService.getIssuedBooks();
+		model.addAttribute("issuedBooks", issuedBooks);	
+		return "issuedbook";
+	}
+
 }

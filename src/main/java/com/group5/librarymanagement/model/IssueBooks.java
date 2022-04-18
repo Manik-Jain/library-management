@@ -37,6 +37,16 @@ public class IssueBooks implements Serializable {
 	
 	private Long incurredFine;
 	
+	private Boolean isActive;
+		
+		public Boolean isActive() {
+			return isActive;
+		}
+		public void setActive(Boolean isActive) {
+			this.isActive = isActive;
+		}
+
+	
 	public Date getActualReturnDate() {
 		return actualReturnDate;
 	}

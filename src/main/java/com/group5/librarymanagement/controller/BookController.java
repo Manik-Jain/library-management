@@ -74,8 +74,8 @@ public class BookController {
 		System.out.print(book);
 		Book addBook=bookService.addBook(book);
 		String success ="Book added succesfully";
-		model.addAttribute("success", success);		
-		return "addbook";
+		model.addAttribute("books", bookService.getAllBooks());
+		return "showbook";
 	}
 	
 	@RequestMapping("/search")
